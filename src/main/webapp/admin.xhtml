@@ -16,8 +16,29 @@
     </ui:define>
 
     <ui:define name="content">
+        
+        <h:outputText value="Usuario: ${loginBean.usuario} "/>
+        <h:outputText value="[administrador]" rendered="${loginBean.adm}"/>
         <h:form>
+            <div class="titulo-form">INSCRITOS</div>
+            <h:dataTable value="#{dadosBean.dados}" var="usuario">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome Usuario"/>
+                    </f:facet>
+                    <h:outputText value="#{usuario.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Data de Acesso"/>
+                    </f:facet>
+                    <h:outputText value="#{usuario.dataAcesso}"/>
+                </h:column>
+            </h:dataTable>
+            <h:commandButton value="Login" action="#{loginBean.logar}" />
+            <h:commandButton value="Cadastro" action="#{loginBean.cadastrar}" />
         </h:form>
+        
     </ui:define>
 
 </ui:composition>
